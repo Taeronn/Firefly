@@ -4,22 +4,24 @@ import { useFonts } from 'expo-font';
 import {useCallback, useState} from "react";
 import Header from "./src/components/Header";
 import * as SplashScreen from 'expo-splash-screen';
+import Animated from "react-native-reanimated";
 
 SplashScreen.preventAutoHideAsync();
 
 export default function App() {
+  // STATES:
   const [switchEnabled, setSwitchEnabled] = useState(false);
   const [text, setText] = useState('Turn the switch');
+
+  // FONTS:
   const [fontsLoaded] = useFonts({
         'Judson-Regular': require('./assets/fonts/Judson-Regular.ttf')
   });
-
   const onLayoutRootView = useCallback(async () => {
     if (fontsLoaded) {
       await SplashScreen.hideAsync();
     }
   }, [fontsLoaded]);
-
   if (!fontsLoaded) {
     return null;
   }
@@ -30,19 +32,15 @@ export default function App() {
     } else {
       setText('Active') //запрос на включение + режим
     }
-
     setSwitchEnabled(previousState => !previousState);
   }
-
-
 
 
   return (
       <View style={styles.root} onLayout={onLayoutRootView}>
         <Header switchEnabled={switchEnabled} toggleSwitch={toggleSwitch}/>
-
         <Text style={styles.text}>{text}</Text>
-        <StatusBar style="auto"/>
+        <StatusBar style="light"/>
       </View>
   );
 }

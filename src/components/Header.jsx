@@ -17,13 +17,11 @@ const HeaderBox = styled.View`
 
 const Header = ({switchEnabled, toggleSwitch}) => {
 
-    console.log(toggleSwitch);
-
     return (
         <HeaderView>
             <HeaderBox style={{flexDirection: 'row', justifyContent: "space-between", flex: 1}}>
                 <TouchableOpacity opacity={0.5}>
-                    <SettingsBtn/>
+                    <SettingsBtn style={{marginTop:10}}/>
                 </TouchableOpacity>
 
             </HeaderBox>
