@@ -1,60 +1,55 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
-import { useFonts } from 'expo-font';
-import {useCallback, useState} from "react";
+import React, {useCallback, useState} from 'react';
+import {StyleSheet, View} from "react-native";
+import { Navigation } from './src/screens/Navigation';
 import Header from "./src/components/Header";
-import * as SplashScreen from 'expo-splash-screen';
-import Animated from "react-native-reanimated";
+import {useFonts} from "expo-font";
+import * as SplashScreen from "expo-splash-screen";
+import {COLORS} from "./src/components/constants/theme";
+import {StatusBar} from "expo-status-bar";
 
 SplashScreen.preventAutoHideAsync();
 
 export default function App() {
-  // STATES:
-  const [switchEnabled, setSwitchEnabled] = useState(false);
-  const [text, setText] = useState('Turn the switch');
+    // STATES:
+    const [switchEnabled, setSwitchEnabled] = useState(false);
+    const [text, setText] = useState('Turn the switch');
 
-  // FONTS:
-  const [fontsLoaded] = useFonts({
-        'Judson-Regular': require('./assets/fonts/Judson-Regular.ttf')
-  });
-  const onLayoutRootView = useCallback(async () => {
-    if (fontsLoaded) {
-      await SplashScreen.hideAsync();
+    // FONTS:
+    const [fontsLoaded] = useFonts({
+        'Judson-Regular': require('./src/assets/fonts/Judson-Regular.ttf')
+    });
+    const onLayoutRootView = useCallback(async () => {
+        if (fontsLoaded) {
+            await SplashScreen.hideAsync();
+        }
+    }, [fontsLoaded]);
+    if (!fontsLoaded) {
+        return null;
     }
-  }, [fontsLoaded]);
-  if (!fontsLoaded) {
-    return null;
-  }
 
-  function toggleSwitch() {
-    if(switchEnabled) {
-      setText('Inactive') //запрос на выключение
-    } else {
-      setText('Active') //запрос на включение + режим
+    function toggleSwitch() {
+        if(switchEnabled) {
+            setText('Inactive') //запрос на выключение
+        } else {
+            setText('Active') //запрос на включение + режим
+        }
+        setSwitchEnabled(previousState => !previousState);
     }
-    setSwitchEnabled(previousState => !previousState);
-  }
 
-
-  return (
+    return (
       <View style={styles.root} onLayout={onLayoutRootView}>
-        <Header switchEnabled={switchEnabled} toggleSwitch={toggleSwitch}/>
-        <Text style={styles.text}>{text}</Text>
-        <StatusBar style="light"/>
+          <Navigation switchEnabled={switchEnabled} toggleSwitch={toggleSwitch}/>
+          <StatusBar style="light"/>
       </View>
   );
 }
 
 const styles = StyleSheet.create({
-  root: {
-    flex: 1,
-    backgroundColor: '#1C1C1C',
-    padding: 20,
-    paddingTop: 35
-  },
-  text: {
-    color: "#fff",
-    fontSize: 24,
-    fontFamily: "Judson-Regular"
-  }
+    root: {
+        flex: 1,
+        backgroundColor: COLORS.BG,
+        padding: 20,
+        paddingTop: 35
+    }
 });
+

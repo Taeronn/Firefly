@@ -4,8 +4,8 @@ import Svg, { Path } from "react-native-svg"
 const SettingsBtn = (props) => (
     <Svg
         fill="#fff"
-        width={30}
-        height={30}
+        width={35}
+        height={35}
         viewBox="0 0 56 56"
         xmlns="http://www.w3.org/2000/svg"
         {...props}
