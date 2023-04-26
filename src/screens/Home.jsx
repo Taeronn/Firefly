@@ -1,4 +1,4 @@
-import React, {useCallback, useState} from 'react';
+import React from 'react';
 import {StyleSheet, Text, View} from "react-native";
 import {COLORS} from "../components/constants/theme";
 import { LinearGradient } from 'expo-linear-gradient';
@@ -9,17 +9,23 @@ import EffectsIcon from "../components/UI/SvgComponents/HomeIcons/EffectsIcon";
 import AnimationsIcon from "../components/UI/SvgComponents/HomeIcons/AnimationsIcon";
 
 const Home = ({route}) => {
-    // <HomeHeader switchEnabled={switchEnabled} toggleSwitch={toggleSwitch}/>
     const { navigate } = route.params;
+    const gradientObject = {
+        gradient: [COLORS.tertiary, COLORS.secondary],
+        gradientActive: [COLORS.primary, COLORS.tertiary]
+    }
+
     return (
         <View style={styles.root} >
             <View style={styles.body}>
                 <LinearGradient
-                    colors={[COLORS.tertiary, COLORS.secondary]}
+                    colors={gradientObject.gradient}
                     start={{x: 0, y:0}}
                     end={{x:1, y:0}}
                     style={styles.bodyBox}
-                    onTouchStart={() => navigate('Color')}
+                    onTouchStart={() => {
+                        navigate('Flashlight')
+                    }}
                 >
                     <View style={styles.bodyBoxIcon}>
                         <FlashlightIcon/>
@@ -30,10 +36,11 @@ const Home = ({route}) => {
                 </LinearGradient>
 
                 <LinearGradient
-                    colors={[COLORS.tertiary, COLORS.secondary]}
+                    colors={gradientObject.gradient}
                     start={{x: 0, y:0}}
                     end={{x:1, y:0}}
                     style={styles.bodyBox}
+                    onTouchStart={() => navigate('Color')}
                 >
                     <View style={styles.bodyBoxIcon}>
                         <RainbowIcon/>
@@ -44,10 +51,11 @@ const Home = ({route}) => {
                 </LinearGradient>
 
                 <LinearGradient
-                    colors={[COLORS.tertiary, COLORS.secondary]}
+                    colors={gradientObject.gradient}
                     start={{x: 0, y:0}}
                     end={{x:1, y:0}}
                     style={styles.bodyBox}
+                    onTouchStart={() => navigate('Painting')}
                 >
                     <View style={styles.bodyBoxIcon}>
                         <PaintingIcon/>
@@ -58,10 +66,11 @@ const Home = ({route}) => {
                 </LinearGradient>
 
                 <LinearGradient
-                    colors={[COLORS.tertiary, COLORS.secondary]}
+                    colors={gradientObject.gradient}
                     start={{x: 0, y:0}}
                     end={{x:1, y:0}}
                     style={styles.bodyBox}
+                    onTouchStart={() => navigate('Effects')}
                 >
                     <View style={styles.bodyBoxIcon}>
                         <EffectsIcon/>
@@ -72,10 +81,11 @@ const Home = ({route}) => {
                 </LinearGradient>
 
                 <LinearGradient
-                    colors={[COLORS.tertiary, COLORS.secondary]}
+                    colors={gradientObject.gradient}
                     start={{x: 0, y:0}}
                     end={{x:1, y:0}}
                     style={styles.bodyBox}
+                    onTouchStart={() => navigate('Animations')}
                 >
                     <View style={styles.bodyBoxIcon}>
                         <AnimationsIcon/>
@@ -93,7 +103,9 @@ const Home = ({route}) => {
 const styles = StyleSheet.create({
     root: {
         flex: 1,
-        backgroundColor: COLORS.BG
+        backgroundColor: COLORS.BG,
+        padding: 20,
+        paddingVertical: 10
     },
     text: {
         color: COLORS.white,

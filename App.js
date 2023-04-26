@@ -1,7 +1,6 @@
 import React, {useCallback, useState} from 'react';
 import {StyleSheet, View} from "react-native";
 import { Navigation } from './src/screens/Navigation';
-import Header from "./src/components/Header";
 import {useFonts} from "expo-font";
 import * as SplashScreen from "expo-splash-screen";
 import {COLORS} from "./src/components/constants/theme";
@@ -30,15 +29,20 @@ export default function App() {
     function toggleSwitch() {
         if(switchEnabled) {
             setText('Inactive') //запрос на выключение
+            console.log(`Switch disabled, Active mode set to null`)
         } else {
             setText('Active') //запрос на включение + режим
+            console.log('Switch enabled')
         }
         setSwitchEnabled(previousState => !previousState);
     }
 
     return (
       <View style={styles.root} onLayout={onLayoutRootView}>
-          <Navigation switchEnabled={switchEnabled} toggleSwitch={toggleSwitch}/>
+          <Navigation
+              switchEnabled={switchEnabled}
+              toggleSwitch={toggleSwitch}
+          />
           <StatusBar style="light"/>
       </View>
   );
@@ -48,7 +52,6 @@ const styles = StyleSheet.create({
     root: {
         flex: 1,
         backgroundColor: COLORS.BG,
-        padding: 20,
         paddingTop: 35
     }
 });

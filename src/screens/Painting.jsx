@@ -2,12 +2,12 @@ import React from 'react';
 import {StyleSheet, View, Text} from "react-native";
 import {COLORS} from "../components/constants/theme";
 
-const Color = () => {
+const Painting = () => {
     return (
         <View style={styles.root}>
             <View style={styles.header}>
                 <View style={styles.modeTable}>
-                    <Text style={styles.modeTableText}>color</Text>
+                    <Text style={styles.modeTableText}>painting</Text>
                 </View>
             </View>
             <View style={styles.body}>
@@ -48,8 +48,7 @@ const styles = StyleSheet.create({
         fontFamily: "Judson-Regular"
     },
     body: {
-        flex: 9,
-        backgroundColor: COLORS.white
+        flex: 9
     },
     footer: {
         flex: 5,
@@ -57,4 +56,4 @@ const styles = StyleSheet.create({
     }
 });
 
-export default Color;
+export default Painting;

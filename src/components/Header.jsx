@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 import {StyleSheet, Text, TouchableOpacity} from "react-native";
 import styled from "styled-components/native";
 import Switcher from "./UI/Switcher/Switcher";
@@ -12,6 +12,7 @@ const HeaderView = styled.View`
   justify-content: space-between;
   padding: 1% 2%;
   align-items: center;
+  margin: 0px 10px;
 `;
 
 const HeaderBox = styled.View`
@@ -34,7 +35,7 @@ const Header = ({switchEnabled, toggleSwitch, navigate, isHome}) => {
                 </TouchableOpacity>
             </HeaderBox>
 
-            <HeaderBox>
+            <HeaderBox onTouchStart={() => console.log(`${switchEnabled}, ${isHome}`)}>
                 <Text style={styles.title}>Firefly</Text>
             </HeaderBox>
 

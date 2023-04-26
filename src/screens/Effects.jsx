@@ -2,12 +2,12 @@ import React from 'react';
 import {StyleSheet, View, Text} from "react-native";
 import {COLORS} from "../components/constants/theme";
 
-const Color = () => {
+const Effects = () => {
     return (
         <View style={styles.root}>
             <View style={styles.header}>
                 <View style={styles.modeTable}>
-                    <Text style={styles.modeTableText}>color</Text>
+                    <Text style={styles.modeTableText}>effects</Text>
                 </View>
             </View>
             <View style={styles.body}>
@@ -57,4 +57,4 @@ const styles = StyleSheet.create({
     }
 });
 
-export default Color;
+export default Effects;
