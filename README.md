@@ -1,7 +1,8 @@
 # Firefly🔥
 Make your own custom pixel lamp and control it using your phone.  
 This app is designed to make using ESP for various smart light sources much easier. The app will compete with popular libraries such as [**WLED**](https://kno.wled.ge/) and [**GyverPanelWiFi**](https://github.com/vvip-68/GyverPanelWiFi), thanks to its improved design and increased user-friendliness.  
-![Example of pixel lamp](https://core-electronics.com.au/media/wysiwyg/tutorials/Tim/wled-grid-control/Some_Pixel_Artttt.jpg)
+![Example of pixel lamp](https://media.printables.com/media/prints/73464/images/796440_ccbd5958-dfe3-4eeb-b47d-117401a994b7/thumbs/cover/1280x960/jpg/large_display_0c681b62-6b45-4c85-85ec-32dc0599654.webp)
+
 
 ## Roadmap
 1. Frontend  
